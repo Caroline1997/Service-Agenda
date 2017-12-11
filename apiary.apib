@@ -5,76 +5,131 @@ HOST: http://polls.apiblueprint.org/
 
 Polls is a simple API allowing consumers to view polls and vote in them.
 
-## Questions Collection [/questions]
+## Group User [/v1/user]
 
-### List All Questions [GET]
+### Check Login [GET /v1/user/login{?openid}]
+
++ Parameters
+    - openid : `iddd` (string, required) - Open ID
+    
++ Response 200 (application/json)
+
+        {
+            "username":"root"
+        }
+        
+### Login [POST /v1/user/login]
+
++ Request (application/json)
+
+        {
+            "username":"root",
+            "password":"pass"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "openid":"iddd",
+            "message":"Succeed to log in"
+        }
+        
+### Logout [POST /v1/user/logout]
+
++ Response 200 (application/json)
+
+    + Header 
+    
+            Location: /v1/user/login
+
+
+### Delete [DELETE /v1/user/account]
+
++ Response 200 (application/json)
+
+    + Header
+            
+            Location: /v1/user/login
+
+## Group Users [/v1/users]
+
+### Register [POST]
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "username":"root",
+                "password":"pass",
+                "email":"email@xxx.com",
+                "phonenumber":"12345612345"
+            }
+            
++ Response 201 (application/json)
+
+    + Header
+    
+            Location: /v1/user/login
+    
+    + Body
+    
+            {}
+            
++ Response 400 (application/json)
+
+        {
+            "message": "incorrect username"
+        }
+        
+## Group Meetings [/v1/meetings]
+
+### Create Meeting [POST /v1/meetings]
+
++ Request (application/json)
+
+    + Body
+    
+            {
+                "title":"meeting",
+                "participators":"par",
+                "startTime":"2017-12-11/11:00",
+                "endTime":"2017-12-11/12:00"
+            }
+            
++ Response 201 (application/json)
+
+    + Header
+    
+            Location: /v1/meetings
+    
+    + Body
+        
+            {}
+            
++ Response 400 (application/json)
+
+        {
+            "message":"incorrect title"
+        }
+        
+### Query Meetings [GET /v1/meetings{?startTime,endTime}]
+
++ Parameters
+    - startTime : `2017-12-11/11:00` (string, required) - Start Time
+    - endTime : `2017-12-11/12:00` (string, required) - End Time
 
 + Response 200 (application/json)
 
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "title":"meeting",
+                "participators":["par"],
+                "startTime":"2017-12-11/11:00",
+                "endTime":"2017-12-11/12:00"
             }
         ]
+        
++ Response 400 (application/json)
 
-### Create a New Question [POST]
-
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
-
-+ Request (application/json)
-
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
-        }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+        []
