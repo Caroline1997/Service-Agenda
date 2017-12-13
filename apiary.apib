@@ -7,15 +7,20 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 
 ## Group User [/v1/user]
 
-### Check Login [GET /v1/user/login{?openid}]
+### Check Login [GET /v1/user/login{?username}]
 
 + Parameters
-    - openid : `iddd` (string, required) - Open ID
+    - username : `root` (string, required) - User Name
     
 + Response 200 (application/json)
 
         {
             "username":"root"
+        }
+        
++ Response 401 (application/json)
+        
+        {
         }
         
 ### Login [POST /v1/user/login]
@@ -32,6 +37,11 @@ Polls is a simple API allowing consumers to view polls and vote in them.
         {
             "openid":"iddd",
             "message":"Succeed to log in"
+        }
++ Response 400 (application/json) 
+
+        {
+            "message":"You have logged in, please log out first"
         }
         
 ### Logout [POST /v1/user/logout]
@@ -50,6 +60,8 @@ Polls is a simple API allowing consumers to view polls and vote in them.
     + Header
             
             Location: /v1/user/login
+            
++ Response 401 (application/json)
 
 ## Group Users [/v1/users]
 
@@ -92,6 +104,7 @@ Polls is a simple API allowing consumers to view polls and vote in them.
     
             {
                 "title":"meeting",
+                "sponsor":"root"
                 "participators":"par",
                 "startTime":"2017-12-11/11:00",
                 "endTime":"2017-12-11/12:00"
@@ -105,13 +118,16 @@ Polls is a simple API allowing consumers to view polls and vote in them.
     
     + Body
         
-            {}
-            
+            {
+            }
+    
 + Response 400 (application/json)
 
         {
             "message":"incorrect title"
         }
+
++ Response 401 (application/json)
         
 ### Query Meetings [GET /v1/meetings{?startTime,endTime}]
 
@@ -124,6 +140,7 @@ Polls is a simple API allowing consumers to view polls and vote in them.
         [
             {
                 "title":"meeting",
+                "sponsor":"root",
                 "participators":["par"],
                 "startTime":"2017-12-11/11:00",
                 "endTime":"2017-12-11/12:00"
@@ -133,3 +150,5 @@ Polls is a simple API allowing consumers to view polls and vote in them.
 + Response 400 (application/json)
 
         []
+        
++ Response 401 (application/json)
