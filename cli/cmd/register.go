@@ -22,8 +22,8 @@ var registerCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(registerCmd)
-	registerCmd.Flags().StringP("user", "u", "default_name", "Username")
-	registerCmd.Flags().StringP("password", "p", "default_password", "Password")
-	registerCmd.Flags().StringP("mail", "m", "default_mail", "email_address")
-	registerCmd.Flags().StringP("phone", "n", "default_phonenumber", "phone_number")
+	registerCmd.Flags().StringP("user", "u", "", "Username")
+	registerCmd.Flags().StringP("password", "p", "", "Password")
+	registerCmd.Flags().StringP("mail", "m", "", "email_address")
+	registerCmd.Flags().StringP("phone", "n", "", "phone_number")
 }

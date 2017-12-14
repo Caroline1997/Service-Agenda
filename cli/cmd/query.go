@@ -22,6 +22,6 @@ var queryCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(queryCmd)
-	queryCmd.Flags().StringP("name","n","default_name","user_name")
-	queryCmd.Flags().StringP("password", "p", "default_password", "password")
+	queryCmd.Flags().StringP("name","n","","user_name")
+	queryCmd.Flags().StringP("password", "p", "", "password")
 }

@@ -21,6 +21,6 @@ var queryMeetingCmd = &cobra.Command{
 
 func init() {
     RootCmd.AddCommand(queryMeetingCmd)
-    queryMeetingCmd.Flags().StringP("StartTime", "s", "Anonymous", "startTime of the meeting")
-    queryMeetingCmd.Flags().StringP("EndTime", "e", "default_endtime", "endTime of the meeting")
+    queryMeetingCmd.Flags().StringP("StartTime", "s", "", "startTime of the meeting")
+    queryMeetingCmd.Flags().StringP("EndTime", "e", "", "endTime of the meeting")
 }

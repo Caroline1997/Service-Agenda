@@ -22,6 +22,6 @@ var logoutCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(logoutCmd)
-	logoutCmd.Flags().StringP("name", "n", "default_name", "logout username")
-	logoutCmd.Flags().StringP("password", "p", "default_password", "password")
+	logoutCmd.Flags().StringP("name", "n", "", "logout username")
+	logoutCmd.Flags().StringP("password", "p", "", "password")
 }
