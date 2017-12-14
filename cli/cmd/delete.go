@@ -21,6 +21,6 @@ var deleteCmd = &cobra.Command{
 
 func init() {
 	RootCmd.AddCommand(deleteCmd)
-	deleteCmd.Flags().StringP("name","n","default_name","user_name")
-	deleteCmd.Flags().StringP("password", "p", "default_password", "password")
+	deleteCmd.Flags().StringP("name","n","","user_name")
+	deleteCmd.Flags().StringP("password", "p", "", "password")
 }
