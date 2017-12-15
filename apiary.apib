@@ -40,7 +40,12 @@ Polls is a simple API allowing consumers to view polls and vote in them.
         {
             "message":"You have logged in, please log out first"
         }
-        
+
++ Response 401 (application/json)
+
+        {
+            "message":"the name and password anr incorrect"
+        }
 ### Logout [POST /v1/user/logout]
 
 + Response 200 (application/json)
