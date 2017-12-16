@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"github.com/Caroline1997/Service-Agenda/cli/service"
+	"Service-Agenda/cli/service"
 	"github.com/spf13/cobra"
 	"log"
 	"os"

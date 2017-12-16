@@ -1,11 +1,9 @@
 package cmd
 
 import (
-  "fmt"
-	"github.com/Caroline1997/Service-Agenda/cli/service"
-  "log"
+	"Service-Agenda/cli/service"
+
 	"github.com/spf13/cobra"
-	"os"
 )
 
 // registerCmd represents the register command
@@ -18,11 +16,7 @@ var registerCmd = &cobra.Command{
 		password, _ := cmd.Flags().GetString("password")
 		mail, _ := cmd.Flags().GetString("mail")
 		phone, _ := cmd.Flags().GetString("phone")
-		err := service.Register(username, password, mail, phone)
-		if err != nil {
-			  fmt.Println(err)
-		}
-		fmt.Println("Register successfully!")
+		service.Register(username, password, mail, phone)
 	},
 }
 

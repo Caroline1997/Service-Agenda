@@ -1,8 +1,7 @@
 package cmd
 
 import (
-    "fmt"
-    "github.com/Caroline1997/Service-Agenda/cli/service"
+    "Service-Agenda/cli/service"
     "github.com/spf13/cobra"
     "log"
     "os"
@@ -16,24 +15,7 @@ var queryMeetingCmd = &cobra.Command{
     Run: func(cmd *cobra.Command, args []string) {
         startTime, _ := cmd.Flags().GetString("StartTime")
         endTime, _ := cmd.Flags().GetString("EndTime")
-        meetings, err := service.Query_meeting(startTime, endTime)
-        if err != nil {
-            fmt.Println(err)
-        }
-        if len(meetings) == 0 {
-            fmt.Println("There is no meeting!")
-            return
-        }
-        for temp, m := range meetings {
-				    fmt.Println("Title: %s", m.Title)
-				    fmt.Println("Sponsor: %s", m.Sponsor)
-            fmt.Println("Participators:")
-            for _, participator := range m.Participators {
-                fmt.Println("%s", participator)
-            }
-            fmt.Println("StartTime: %s", m.StartTime)
-				    fmt.Println("EndTime: %s", m.EndTime)
-        }
+        service.Query_meeting(startTime, endTime)
     },
 }
 

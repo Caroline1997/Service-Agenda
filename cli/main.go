@@ -14,7 +14,7 @@
 
 package main
 
-import "cmd"
+import "Service-Agenda/cmd"
 
 func main() {
 	cmd.Execute()

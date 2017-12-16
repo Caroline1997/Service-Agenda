@@ -12,34 +12,35 @@ import (
 func Login(name string, password string) (err error) {
     err = entity.Check_Login()
     if err != nil {
-        return err
+        return
     }
     if Check_Login() == true {
         var currentUser string
         currentUser, err = entity.GetCurrentUser()
         err = fmt.Errorf("There exist someone logged as '%s', please logout!", currentUser)
-        return err
+        return
     }
     _, err = entity.Login(username, password)
     if err != nil {
-        return err
+        return
     }
-    return nil
+    return
 }
 
 // Logout POST /v1/user/logout
 func Logout() (err error) {
     err = entity.Check_Login()
     if err != nil {
-        return err
+        return
     }
     if Check_Login() == true {
         err = entity.Logout()
         if err != nil {
-            return err
+            return
         }
+        //entity.CurSessionModel.SetCurOpenid("")
     }
-    return nil
+    return
 }
 
 // User's command
@@ -64,13 +65,10 @@ func Register(username string, password string, email string, phone string) (err
     }
     err = check_user_valid(User1)
     if err != nil {
-        return err
+        return
     }
     err = entity.CreateUser(User1)
-    if err != nil {
-        return err
-    }
-    return nil
+    return
 }
 
 // DELETE DELETE /v1/user/account
@@ -85,12 +83,7 @@ func Delete_user(username string, password string) (err error) {
             return err
         }
     }
-    return nil
-}
-
-// ListAllUsers GET /v1/users
-func List_all_users() ([]entity.User, error) {
-    return entity.ListAllUsers()
+    return
 }
 
 // Meeting's command
@@ -112,9 +105,9 @@ func Create_meeting(title string, participators []string, startTime string, endT
         return err
     }
     if Check_Login() == true {
-        sponsor, err := entity.GetCurrentUser()
+        sponsor, _ := entity.GetCurrentUser()
         if err != nil {
-            return err
+            return
         }
         Meeting1 := &entity.Meeting{
             Sponsor : sponsor,
@@ -125,18 +118,15 @@ func Create_meeting(title string, participators []string, startTime string, endT
       	}
         err = check_meeting_valid(Meeting1)
         if err != nil {
-            return err
+            return
         }
-        err = entity.CreateMeeting(Meeting1)
-        if err != nil {
-            return err
-        }
-        return nil
+        entity.CreateMeeting(Meeting1, err)
+        return
     }
 }
 
 // Query Meetings GET /v1/meetings{?startDate,endDate}
-func Query_meeting(startTime string, endTime string) (meetings []entity.Meeting, err error) {
+func Query_meeting(startTime string, endTime string) ([]entity.Meeting, error) {
     err = Check_Login()
     if err != nil {
         return nil, err
@@ -163,10 +153,7 @@ func Query_meeting(startTime string, endTime string) (meetings []entity.Meeting,
         if startTime > endTime {
             return nil, fmt.Errorf("startTime should not larger than endTime!")
         }
-        meetings, err= entity.QueryMeeting(startTime, endTime)
-        if err != nil {
-            return nil, err
-        }
+        meetings := entity.QueryMeeting(startTime, endTime, err)
         return meetings, nil
     }
 }

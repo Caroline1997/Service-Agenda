@@ -20,7 +20,7 @@ func CreateUser(user *User) (err error) {
     }
     code, err = request("POST", "/api/users", user, &responseBody)
     if err != nil {
-        return 
+        return
     }
     // 201
     if code == http.StatusCreated {
@@ -40,20 +40,6 @@ func DeleteUser() (err error) {
     // 200
     if code == http.StatusOK {
         return
-    }
-    err = fmt.Errorf("%d", code)
-    return
-}
-
-func ListAllUsers() (user []User, err error) {
-    var code int
-    code, err = request("GET", "/api/users", nil, &user)
-    if err != nil {
-        return
-    }
-    // 200
-    if code == http.StatusOK {
-        return user
     }
     err = fmt.Errorf("%d", code)
     return
