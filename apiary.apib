@@ -96,6 +96,17 @@ Polls is a simple API allowing consumers to view polls and vote in them.
             "message": "incorrect username"
         }
         
+### Show All Usersshow [GET /v1/users]
+
++ Response 200 (application/json)
+
+        [
+            {"username": "u1"},
+            {"username": "u2"}
+        ]
+    
++ Response 401 (application/json)
+
 ## Group Meetings [/v1/meetings]
 
 ### Create Meeting [POST /v1/meetings]
