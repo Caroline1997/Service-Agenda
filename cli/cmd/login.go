@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	//"fmt"
-	"Service-Agenda/cli/service"
+	"fmt"
+	"github.com/Caroline1997/Service-Agenda/cli/service"
 	"github.com/spf13/cobra"
 	"os"
 	"log"
@@ -15,7 +15,11 @@ var loginCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		name, _ := cmd.Flags().GetString("name")
 		password, _ := cmd.Flags().GetString("password")
-		service.Login(name, password)
+		err := service.Login(name, password)
+		if err != nil {
+			  fmt.Println(err)
+		}
+		fmt.Println("Login successfully!")
 	},
 }
 
