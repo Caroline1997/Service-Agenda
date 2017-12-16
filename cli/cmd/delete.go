@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	"Service-Agenda/cli/service"
+	"github.com/Caroline1997/Service-Agenda/cli/service"
 	"github.com/spf13/cobra"
 	"os"
 	"log"
@@ -15,7 +15,11 @@ var deleteCmd = &cobra.Command{
 	Run: func(cmd *cobra.Command, args []string) {
 		name, _ := cmd.Flags().GetString("name")
 		password, _ := cmd.Flags().GetString("password")
-		service.Delete_user(name, password)
+		err := service.Delete_user(name, password)
+		if err != nil {
+			  fmt.Println(err)
+		}
+		fmt.Println("Delete user successfully!")
 	},
 }
 

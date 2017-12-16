@@ -13,13 +13,12 @@ func Login(username string, password string) (err error) {
         Password string `json:"password"`
     }{username, password}
     var responseBody struct {
-        //Openid string `json:"openid"`
         Message string `json:"message"`
     }
     var code int
     code, err = request("POST", "/api/user/login", &requestBody, &responseBody)
     if err != nil {
-        return
+        return err
     }
     // 200
 	  if code == http.StatusOK {
@@ -34,7 +33,7 @@ func Logout() (err error) {
     var code int
     code, err = request("POST", "/api/user/logout", nil, nil)
     if err != nil {
-        return
+        return err
     }
     // 200
     if code == http.StatusOK {
@@ -52,7 +51,7 @@ func Check_Login() (flag bool, err error) {
     var code int
     code, err = request("GET", "/api/user/login", nil, &responseBody)
     if err != nil {
-        return
+        return err
     }
     flag = false
     // 200
@@ -71,7 +70,7 @@ func GetCurrentUser() (username string, err error) {
     var code int
     code, err = request("GET", "/api/user/login", nil, &responseBody)
     if err != nil {
-        return
+        return err
     }
     // 200
     if code == http.StatusOK {
@@ -79,7 +78,7 @@ func GetCurrentUser() (username string, err error) {
     }
     // 401
     if code == http.StatusUnauthorized {
-        return
+        return err
     }
-    return
+    return username
 }

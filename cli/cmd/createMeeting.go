@@ -1,8 +1,9 @@
 package cmd
 
 import (
+    "fmt"
     "github.com/spf13/cobra"
-    "Service-Agenda/cli/service"
+    "github.com/Caroline1997/Service-Agenda/cli/service"
     "log"
     "os"
 )
@@ -12,12 +13,15 @@ var createMeetingCmd = &cobra.Command{
     Short: "create a new meeting",
     Long: `usage of using this command is to create a new meeting`,
     Run: func(cmd *cobra.Command, args []string) {
-  		  querylog := log.New(file,"",log.LstdFlags|log.Llongfile)
         title, _ := cmd.Flags().GetString("Title")
         participators, _ := cmd.Flags().GetStringSlice("Participators")
         startTime, _ := cmd.Flags().GetString("StartTime")
         endTime, _ := cmd.Flags().GetString("EndTime")
-        service.Create_meeting(title, participators, startTime, endTime)
+        err := service.Create_meeting(title, participators, startTime, endTime)
+        if err != nil {
+            fmt.Println(err)
+        }
+        fmt.Println("Create meeting successfully!")
     },
 }
 
