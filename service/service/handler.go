@@ -1,7 +1,7 @@
 package service
 
 import (
-	"hw/Service-Agenda/service/entities"
+	"entities"
 	"net/http"
 
 	"encoding/json"

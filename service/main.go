@@ -3,7 +3,7 @@ package main
 import (
 	"os"
 
-	"hw/Service-Agenda/service/service"
+	"service"
 
 	flag "github.com/spf13/pflag"
 )
