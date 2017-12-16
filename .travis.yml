@@ -1,1 +1,4 @@
 language: go
+
+go：
+  - master
