@@ -2,7 +2,7 @@ package entity
 
 import (
 	"fmt"
-	"net/http"
+	//"net/http"
 )
 
 type Meeting struct {
