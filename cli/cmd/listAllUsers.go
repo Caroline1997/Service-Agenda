@@ -5,8 +5,6 @@ import (
 
 	"github.com/Caroline1997/Service-Agenda/cli/service"
 	"github.com/spf13/cobra"
-	//"log"
-	//"os"
 )
 
 // listAllUsersCmd represents the listAllUsers command
@@ -25,7 +23,7 @@ var listAllUsersCmd = &cobra.Command{
 		}
 		fmt.Println("All users in this Agenda")
 		for _, user := range username {
-			fmt.Println("Username:", user.Username)
+			fmt.Println("Username: ", user.Username)
 		}
 	},
 }

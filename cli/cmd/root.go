@@ -56,7 +56,7 @@ func init() {
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
 	RootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.Agenda.yaml)")
-  RootCmd.PersistentFlags().StringVar(&serverURL, "server", "", "set server url (default to http://localhost:8080)")
+	//RootCmd.PersistentFlags().StringVar(&serverURL, "server", "", "set server url (default to http://localhost:8080)")
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
 	//RootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")

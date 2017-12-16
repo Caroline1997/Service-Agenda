@@ -1,8 +1,9 @@
 package service
 
 import (
-	"entities"
 	"net/http"
+
+	"github.com/Caroline1997/Service-Agenda/service/entities"
 
 	"encoding/json"
 	"fmt"
