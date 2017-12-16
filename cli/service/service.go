@@ -144,7 +144,7 @@ func Create_meeting(title string, participators []string, startTime string, endT
 }
 
 // Query Meetings GET /v1/meetings{?startDate,endDate}
-func Query_meeting(startTime string, endTime string) (meetings []entity.Meeting, err error) {
+/*func Query_meeting(startTime string, endTime string) (meetings []entity.Meeting, err error) {
 	var flag bool
 	flag, err = entity.Check_Login()
 	if err != nil {
@@ -179,4 +179,4 @@ func Query_meeting(startTime string, endTime string) (meetings []entity.Meeting,
 		return meetings, nil
 	}
 	return nil, nil
-}
+}*/
