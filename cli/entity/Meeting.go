@@ -41,7 +41,7 @@ func CreateMeeting(meeting *Meeting) (err error) {
 }
 
 // for qurey meeting
-func QueryMeeting(startTime string, endTime string) (responseBody []Meeting, err error) {
+/*func QueryMeeting(startTime string, endTime string) (responseBody []Meeting, err error) {
 	var code int
 	code, err = request("GET", "/v1/meetings"+"?startTime="+startTime+"&endTime="+endTime, nil, &responseBody)
 	if err != nil {
@@ -56,4 +56,4 @@ func QueryMeeting(startTime string, endTime string) (responseBody []Meeting, err
 		return nil, fmt.Errorf("Please log in !")
 	}
 	return
-}
+}*/
