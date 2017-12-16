@@ -41,7 +41,7 @@ func DeleteUser() (err error) {
 	if err != nil {
 		return
 	}
-	// 200
+	// 20	
 	if code == http.StatusOK {
 		return
 	}
@@ -64,8 +64,8 @@ func ListAllUsers() (user []User, err error) {
 }
 
 var (
-	//scheme = "http"
-	//host   = "localhost:8080"
+	scheme = "http"
+	host   = "localhost:8080"
 	scheme = "https"
 	host = "private-89d1b-agenda28.apiary-mock.com"
 )
