@@ -1,6 +1,10 @@
 # Agenda
 [![Build Status](https://travis-ci.org/Caroline1997/Service-Agenda.svg?branch=master)](https://travis-ci.org/Caroline1997/Service-Agenda)
 
+[使用 API Blueprint 设计 API](https://agenda28.docs.apiary.io/#reference)
+
+[在 docker hub 上生成镜像](https://hub.docker.com/r/carolinell/service-agenda/)
+
 # command usage
 ![](https://github.com/Caroline1997/Service-Agenda/raw/master/shortcut/usage.png)
 
